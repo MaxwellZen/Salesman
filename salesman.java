@@ -56,6 +56,14 @@ public class salesman {
                     path.add(remain.remove(p % i));
                     p /= i;
                }
+               //NOTES ON WHY THE ABOVE LOOP WORKS:
+                    // So first it's important to note that to generate a path of size n, it is sufficient to generate
+                    // a sequence of numbers where the first number is from 0 to n-1, second number from 0 to n-2,
+                    // etc until the last number is 0. Reason why being each number will determine which of the
+                    // remaining cities will be next in the permutation. The above code does that by taking
+                    // p mod i, where i decreases from n-1 to 1 (generating a path n-1 cities long). The order in which
+                    // the permutations appear is irrelevant, all that matters is that each value of p gives a unique
+                    // path, which can be shown since each step taken is reversible.
                // calculate the sum and the maximum edge
                int currentsum = 0;
                int cmax = 0;
