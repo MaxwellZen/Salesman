@@ -5,42 +5,29 @@ public class salesman {
 
           long start = System.currentTimeMillis();
           //file reading
+
           ArrayList<String> cities = new ArrayList();
-          ArrayList<ArrayList<Integer>> adj = new ArrayList();
+          int adj[][] = new int[10][10];
           Scanner s = new Scanner(System.in);
           while (s.hasNext()) {
                String line = s.nextLine();
                Scanner l = new Scanner(line);
                String c = l.next();
+               //if the city isn't there, add it
                if (cities.indexOf(c)==-1) {
                     cities.add(c);
-                    //make a new row
-                    ArrayList<Integer> temp = new ArrayList(cities.size());
-                    for (int i = 0; i < cities.size(); i++) temp.add(0);
-                    //add a column to each existing row
-                    for (int i = 0; i < adj.size()-1; i++) {
-                         adj.get(i).add(0);
-                    }
-                    adj.add(temp);
                }
                l.next();
                String d = l.next();
+               //if the city isn't there, add it
                if (cities.indexOf(d)==-1) {
                     cities.add(d);
-                    //make a new row
-                    ArrayList<Integer> temp = new ArrayList(cities.size());
-                    for (int i = 0; i < cities.size(); i++) temp.add(0);
-                    //add a column to each existing row
-                    for (int i = 0; i < adj.size(); i++) {
-                         adj.get(i).add(0);
-                    }
-                    adj.add(temp);
                }
                l.next();
                int dist = l.nextInt();
-               //set the distances
-               adj.get(cities.indexOf(c)).set(cities.indexOf(d), dist);
-               adj.get(cities.indexOf(d)).set(cities.indexOf(c), dist);
+               //set the distances in adj
+               adj[cities.indexOf(c)][cities.indexOf(d)]=dist;
+               adj[cities.indexOf(d)][cities.indexOf(c)]=dist;
 
           }
 
@@ -73,13 +60,14 @@ public class salesman {
                int currentsum = 0;
                int cmax = 0;
                for (int i = 0; i < n - 1; i++) {
-                    int dist = adj.get(path.get(i)).get(path.get(i+1));
+                    int dist = adj[path.get(i)][path.get(i+1)];
                     currentsum += dist;
                     cmax = Math.max(dist, cmax);
                }
-               int dist = adj.get(path.get(0)).get(path.get(n-1));
+               int dist = adj[path.get(0)][path.get(n-1)];
                currentsum += dist;
                cmax = Math.max(dist, cmax);
+
                // the best path within that loop will be the total loop sum minus the longest edge
                min = Math.min(currentsum-cmax, min);
           }
