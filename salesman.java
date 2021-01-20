@@ -29,7 +29,12 @@ public class salesman {
                adj[cities.indexOf(originCity)][cities.indexOf(destinationCity)]=dist;
                adj[cities.indexOf(destinationCity)][cities.indexOf(originCity)]=dist;
 
-          }
+          } 
+              //sample final cities list would look like: [London, Dublin, Belfast]
+              //final adjacency list would look like:         L   D    B
+              //                                         [ L [0, 464, 518],             [ [L to L, L to D, L to B],
+              //                                           D [464, 0, 141],      =>       [D to L, D to D, D to B],
+              //                                           B [518, 141, 0] ]              [B to L, B to D, B to B] ]
 
           //calculate stuff
           // assign each permutation a number and loop through those numbers
