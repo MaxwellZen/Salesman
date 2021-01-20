@@ -13,24 +13,24 @@ public class salesman {
                                          // ten cities, which is why we have declared the array as 10x10
           Scanner s = new Scanner(System.in);
           while (s.hasNext()) {
-               String line = s.nextLine();
+               String line = s.nextLine(); // would look like "Faerun to Norrath = 129"
                Scanner l = new Scanner(line);
-               String c = l.next(); // Read first city in the line
+               String originCity = l.next(); // Read first city in the line
                //if the city isn't there, add it
-               if (cities.indexOf(c)==-1) {
-                    cities.add(c);
+               if (cities.indexOf(originCity)==-1) {
+                    cities.add(originCity);
                }
-               l.next(); // Skip "to" in the line
-               String d = l.next(); // Read second city in the line
+               l.next(); // Skip the word "to"
+               String destinationCity = l.next(); // Read second city in the line
                //if the city isn't there, add it
-               if (cities.indexOf(d)==-1) {
-                    cities.add(d);
+               if (cities.indexOf(destinationCity)==-1) {
+                    cities.add(destinationCity);
                }
                l.next(); // Skip "="
                int dist = l.nextInt(); // Read distance
                //set the distances in adj
-               adj[cities.indexOf(c)][cities.indexOf(d)]=dist;
-               adj[cities.indexOf(d)][cities.indexOf(c)]=dist;
+               adj[cities.indexOf(originCity)][cities.indexOf(destinationCity)]=dist;
+               adj[cities.indexOf(destinationCity)][cities.indexOf(originCity)]=dist;
 
           }
 
@@ -70,7 +70,7 @@ public class salesman {
                // calculate the sum and the maximum edge
                int currentsum = 0;
                int cmax = 0;
-               for (int i = 2; i < n; i++) {
+               for (int i = 0; i < n; i++) {
                     int dist = adj[path.get(i)][path.get((i+1)%n)];
                     currentsum += dist;
                     cmax = Math.max(dist, cmax);
