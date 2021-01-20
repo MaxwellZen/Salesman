@@ -6,7 +6,7 @@ public class salesman {
           long start = System.currentTimeMillis();
           //file reading
 
-          ArrayList<String> cities = new ArrayList();
+          ArrayList<String> cities = new ArrayList(); // list of all cities we get from the input file
           int adj[][] = new int[10][10]; // this 2-D array will contain the distances between adjacent
                                          // cities. It has as many columns and rows as the total
                                          // number of cities. We've been told that there's a maximum of
