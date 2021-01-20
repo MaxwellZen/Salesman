@@ -70,15 +70,11 @@ public class salesman {
                // calculate the sum and the maximum edge
                int currentsum = 0;
                int cmax = 0;
-               for (int i = 0; i < n - 1; i++) {
-                    int dist = adj[path.get(i)][path.get(i+1)];
+               for (int i = 0; i < n; i++) {
+                    int dist = adj[path.get(i)][path.get((i+1)%n)];
                     currentsum += dist;
                     cmax = Math.max(dist, cmax);
                }
-               int dist = adj[path.get(0)][path.get(n-1)];
-               currentsum += dist;
-               cmax = Math.max(dist, cmax);
-
                // the best path within that loop will be the total loop sum minus the longest edge
                min = Math.min(currentsum-cmax, min);
           }
