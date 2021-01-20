@@ -10,24 +10,24 @@ public class salesman {
           int adj[][] = new int[10][10];
           Scanner s = new Scanner(System.in);
           while (s.hasNext()) {
-               String line = s.nextLine();
+               String line = s.nextLine(); //would look like "Faerun to Norrath = 129"
                Scanner l = new Scanner(line);
-               String c = l.next();
+               String originCity = l.next();
                //if the city isn't there, add it
-               if (cities.indexOf(c)==-1) {
-                    cities.add(c);
+               if (cities.indexOf(originCity)==-1) {
+                    cities.add(originCity);
                }
-               l.next();
-               String d = l.next();
+               l.next(); //skip the word "to"
+               String destinationCity = l.next();
                //if the city isn't there, add it
-               if (cities.indexOf(d)==-1) {
-                    cities.add(d);
+               if (cities.indexOf(destinationCity)==-1) {
+                    cities.add(destinationCity);
                }
-               l.next();
+               l.next(); //skip the equals sign
                int dist = l.nextInt();
                //set the distances in adj
-               adj[cities.indexOf(c)][cities.indexOf(d)]=dist;
-               adj[cities.indexOf(d)][cities.indexOf(c)]=dist;
+               adj[cities.indexOf(originCity)][cities.indexOf(destinationCity)]=dist;
+               adj[cities.indexOf(destinationCity)][cities.indexOf(originCity)]=dist;
 
           }
 
