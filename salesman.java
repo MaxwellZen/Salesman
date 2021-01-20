@@ -33,6 +33,11 @@ public class salesman {
                adj[cities.indexOf(destinationCity)][cities.indexOf(originCity)]=dist;
 
           }
+              //sample final cities list would look like: [London, Dublin, Belfast]
+              //final adjacency list would look like:         L   D    B
+              //                                         [ L [0, 464, 518],             [ [L to L, L to D, L to B],
+              //                                           D [464, 0, 141],      =>       [D to L, D to D, D to B],
+              //                                           B [518, 141, 0] ]              [B to L, B to D, B to B] ]
 
           //calculate stuff
           // assign each permutation a number and loop through those numbers
@@ -42,7 +47,7 @@ public class salesman {
           for (int i = 2; i < n; i++) {
                fact *= i;
           }
-          int min = Integer.MAX_VALUE;
+          int min = Integer.MAX_VALUE; // an arbitrary value so that the shortest path can be found
           ArrayList<Integer> remain = new ArrayList(n);
           for (int pp = 0; pp < fact; pp++) {
                int p = pp;
@@ -78,9 +83,9 @@ public class salesman {
                // the best path within that loop will be the total loop sum minus the longest edge
                min = Math.min(currentsum-cmax, min);
           }
-          System.out.println(min);
+          System.out.println("Minimum distance: " + min);
           double time = (System.currentTimeMillis()-start)/1000.0;
-		System.out.println(time);
+		System.out.println("Runtime: " + time);
      }
 
 }
