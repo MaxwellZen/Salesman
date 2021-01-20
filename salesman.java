@@ -79,9 +79,9 @@ public class salesman {
                // the best path within that loop will be the total loop sum minus the longest edge
                min = Math.min(currentsum-cmax, min);
           }
-          System.out.println(min);
+          System.out.println("Minimum distance: " + min);
           double time = (System.currentTimeMillis()-start)/1000.0;
-		System.out.println(time);
+		System.out.println("Runtime: " + time);
      }
 
 }
