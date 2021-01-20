@@ -77,7 +77,7 @@ public class salesman {
                     currentsum += dist;
                     cmax = Math.max(dist, cmax);
                }
-               int dist = adj[path.get(0)][path.get(n-1)];
+               int dist = adj[path.get(0)][path.get(n-1)]; //we do this line because of the condition in the for loop above 
                currentsum += dist;
                cmax = Math.max(dist, cmax);
 
