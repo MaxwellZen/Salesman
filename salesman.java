@@ -44,7 +44,7 @@ public class salesman {
           for (int i = 2; i < n; i++) {
                fact *= i;
           }
-          int min = Integer.MAX_VALUE;
+          int min = Integer.MAX_VALUE; //an arbitrary value so that the shortest path can be found
           ArrayList<Integer> remain = new ArrayList(n);
           for (int pp = 0; pp < fact; pp++) {
                int p = pp;
