@@ -67,7 +67,7 @@ public class salesman {
                // calculate the sum and the maximum edge
                int currentsum = 0;
                int cmax = 0;
-               for (int i = 2; i < n - 1; i++) {
+               for (int i = 0; i < n - 1; i++) {
                     int dist = adj[path.get(i)][path.get(i+1)];
                     currentsum += dist;
                     cmax = Math.max(dist, cmax);
