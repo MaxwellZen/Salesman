@@ -15,19 +15,19 @@ public class salesman {
           while (s.hasNext()) {
                String line = s.nextLine();
                Scanner l = new Scanner(line);
-               String c = l.next();
+               String c = l.next(); // Read first city in the line
                //if the city isn't there, add it
                if (cities.indexOf(c)==-1) {
                     cities.add(c);
                }
-               l.next();
-               String d = l.next();
+               l.next(); // Skip "to" in the line
+               String d = l.next(); // Read second city in the line
                //if the city isn't there, add it
                if (cities.indexOf(d)==-1) {
                     cities.add(d);
                }
-               l.next();
-               int dist = l.nextInt();
+               l.next(); // Skip "="
+               int dist = l.nextInt(); // Read distance
                //set the distances in adj
                adj[cities.indexOf(c)][cities.indexOf(d)]=dist;
                adj[cities.indexOf(d)][cities.indexOf(c)]=dist;
